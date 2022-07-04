@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@+id/videoIv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/playArrowIv"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/videoIv"
+            app:layout_constraintEnd_toEndOf="@+id/videoIv"
+            app:layout_constraintStart_toStartOf="@+id/videoIv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/videoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            app:layout_constraintTop_toBottomOf="@+id/videoIv" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/videoIv"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:id="@+id/videoTitle"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/videoIv"
+            app:layout_constraintTop_toTopOf="@+id/videoIv" />
+
+        <Constraint
+            android:id="@+id/playArrowIv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/videoTitle"
+            app:layout_constraintEnd_toEndOf="@+id/videoTitle"
+            app:layout_constraintTop_toTopOf="@+id/videoTitle" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start">
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:touchAnchorId="@id/videoIv" />
+    </Transition>
+</MotionScene>
